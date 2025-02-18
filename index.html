@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GrowMatic</title>
+
+    <link href="vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./vendor/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div id="main-wrapper">
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+                <!-- <img src=".png" alt="GrowMatic Logo" width="124" height="33"> -->
+				 <i class="fas fa-leaf" style="font-size: 24px; color: #000;"></i>
+				<p class="brand-title" width="124px" height="33px"  style="font-size: 20px;">GrowMatic</p>
+            </a>
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+							<div class="dashboard_bar">
+                                Dashboard 
+                            </div>
+                        </div>
+                        <ul class="navbar-nav header-right">
+							<li class="nav-item">
+								<div class="input-group search-area">
+									<input type="text" class="form-control" placeholder="Search here...">
+									<span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
+								</div>
+							</li>
+                        </ul>
+                    </div>
+				</nav>
+			</div>
+		</div>
+
+        <div class="dlabnav">
+            <div class="dlabnav-scroll">
+				<ul class="metismenu" id="menu">
+					<li class="dropdown header-profile">
+						<a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+							<img src="images/ion/man (1).png" width="20" alt=""/>
+							<div class="header-info ms-3">
+								<span class="font-w600 ">Hi,<b>Fauzy</b></span>
+								<small class="text-end font-w400">xyz@gmail.com</small>
+							</div>
+						</a>
+						
+					</li>
+                    <li><a href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-025-dashboard"></i>
+							<span class="nav-text">Dashboard</span>
+						</a>
+                    </li>
+                    <li><a href="javascript:void()" aria-expanded="false">
+						<i class="flaticon-050-info"></i>
+							<span class="nav-text">Camera</span>
+						</a>
+                    </li>
+                </ul>
+			</div>
+        </div>
+
+        <div class="content-body">
+            <!-- Card Atas -->
+            <div class="container-fluid">
+                <div class="row invoice-card-row">
+                    <!-- Monitoring Suhu Ruangan -->
+                    <div class="col-xl-3 col-xxl-3 col-sm-6">
+                        <div class="card bg-warning invoice-card">
+                            <div class="card-body d-flex">
+                                <div class="icon me-3">
+                                    <i class="fas fa-thermometer-half fa-2x text-white"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-white invoice-num" id="suhu-room">-</h2>
+                                    <span class="text-white fs-18">Suhu Ruangan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monitoring Kelembaban -->
+                    <div class="col-xl-3 col-xxl-3 col-sm-6">
+                        <div class="card bg-success invoice-card">
+                            <div class="card-body d-flex">
+                                <div class="icon me-3">
+                                    <i class="fas fa-tint fa-2x text-white"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-white invoice-num" id="kelembaban">-</h2>
+                                    <span class="text-white fs-18">Kelembaban Ruangan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Pompa -->
+                    <div class="col-xl-3 col-xxl-3 col-sm-6">
+                        <div class="card bg-info invoice-card">
+                            <div class="card-body d-flex">
+                                <div class="icon me-3">
+                                    <i class="fas fa-pump-soap fa-2x text-white"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-white invoice-num" id="pompa-status">OFF</h2>
+                                    <span class="text-white fs-18">Status Pompa Sekarang</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tingkat Pertumbuhan Jamur -->
+                    <div class="col-xl-3 col-xxl-3 col-sm-6">
+                        <div class="card bg-secondary invoice-card">
+                            <div class="card-body d-flex">
+                                <div class="icon me-3">
+                                    <i class="fas fa-leaf fa-2x text-white"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-white invoice-num" id="pertumbuhan-jamur">75%</h2>
+                                    <span class="text-white fs-18">Tingkat Pertumbuhan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- section bawah dengan grafik -->
+                <div class="row">
+                    <div class="col-xl-6 col-xxl-12">
+                        <div class="row">
+                            <!-- Switch ON/OFF -->
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Switch Pompa</h4>
+                                        <div class="d-flex align-items-center">
+                                            <div class="me-auto">
+                                                <label class="label">
+                                                    <div class="toggle">
+                                                        <input class="toggle-state" type="checkbox" name="check" value="check" id="pompa-toggle">
+                                                        <div class="indicator"></div>
+                                                    </div>
+                                                </label>
+                                                <p class="fs-16 mb-0 mt-2" id="pompa-status-text">Pompa Off</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mode Otomatis/Manual -->
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Mode Pompa</h4>
+                                        <div class="d-flex align-items-center">
+                                            <div class="me-auto">
+                                                <label class="rocker rocker-small">
+                                                    <input type="checkbox" id="mode-toggle">
+                                                    <span class="switch-left">YES</span>
+                                                    <span class="switch-right">NO</span>
+                                                </label>
+                                                <p class="fs-16 mb-0 mt-2" id="mode-status-text">Mode: Otomatis</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grafik Suhu dan Kelembaban -->
+                    <div class="col-xl-6 col-xxl-12">
+                        <div class="row">
+                            <!-- Grafik Suhu -->
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Grafik Suhu Ruangan</h4>
+                                        <canvas id="suhu-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Grafik Kelembaban -->
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Grafik Kelembaban Ruangan</h4>
+                                        <canvas id="kelembaban-chart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="vendor/global/global.min.js"></script>
+	<script src="vendor/chart.js/Chart.bundle.min.js"></script>
+	<script src="vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+	
+	<!-- Apex Chart -->
+	<script src="vendor/apexchart/apexchart.js"></script>
+	<script src="vendor/nouislider/nouislider.min.js"></script>
+	<script src="vendor/wnumb/wNumb.js"></script>
+	
+	<!-- Dashboard 1 -->
+	<script src="js/dashboard/dashboard-1.js"></script>
+
+    <script src="js/custom.min.js"></script>
+	<script src="js/dlabnav-init.js"></script>
+	<script src="js/demo.js"></script>
+    <script src="js/styleSwitcher.js"></script>
+    <script src="js/grafik.js"></script>
+	
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 let ws;
 
 function connectWebSocket() {
-    ws = new WebSocket('ws://192.168.1.21:81');
+    ws = new WebSocket('ws:990d-103-162-221-250.ngrok-free.app');
     ws.onopen = () => {
         console.log("WebSocket connected");
     };

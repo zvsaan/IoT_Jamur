@@ -235,6 +235,19 @@
 	<script src="js/demo.js"></script>
     <script src="js/styleSwitcher.js"></script>
     <script src="js/grafik.js"></script>
+    <script>
+        document.getElementById("pompa-toggle").addEventListener("change", function() {
+            const isChecked = this.checked;
+            const command = isChecked ? "RELAY:ON" : "RELAY:OFF"; // Perintah untuk menghidupkan atau mematikan relay
+        
+            // Kirim perintah ke server melalui WebSocket
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.send(command);
+            } else {
+                console.error("WebSocket is not connected.");
+            }
+        });
+    </script>
 	
 </body>
 

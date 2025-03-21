@@ -2,7 +2,7 @@ let ws;
 let suhuChart, kelembabanChart; // Referensi grafik
 
 function connectWebSocket() {
-    ws = new WebSocket('ws://192.168.1.5:81');
+    ws = new WebSocket('ws://10.2.1.139:81');
     ws.onopen = () => {
         console.log("WebSocket connected");
     };
